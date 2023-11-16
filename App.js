@@ -56,6 +56,9 @@ export default function App() {
         setCurrentNumber(currentNumber * -1)
         return
       case '%':
+        setLastNumber(currentNumber + " %")
+        setCurrentNumber((currentNumber/100))
+        return
 
     }
 
@@ -77,12 +80,12 @@ export default function App() {
 
         {buttons.map((button) => 
           button === '=' ? // Mapeamento do botão =
-        <TouchableOpacity onPress={() => handleInput(button)} key={button} style={[styles.button, {backgroundColor: '#3dd0e3'}]}>
-          <Text style={[styles.textButton, {color: "white", fontSize: 30}]}>{button}</Text>
+        <TouchableOpacity onPress={() => handleInput(button)} key={button} style={[styles.button, {backgroundColor: '#29025c'}]}>
+          <Text style={[styles.textButton, {color: "#fff", fontSize: 30}]}>{button}</Text>
         </TouchableOpacity>
           : // Mapeamento dos outros botões
           <TouchableOpacity onPress={() => handleInput(button)} key={button} style={styles.button}>
-            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? 'black': '#0093a6'}]}>{button}</Text>
+            <Text style={[styles.textButton, {color: typeof(button) === 'number' ? '#fff': '#6c6c6c'}]}>{button}</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -98,24 +101,26 @@ const styles = StyleSheet.create({
   results: {
     flex: 2,
     justifyContent: "center",
-    backgroundColor: "#f5f5f5"
+    backgroundColor: "#2b0055"
   },
   resultText: {
-    color: "#282F38",
+    color: "#f2f2f2",
     fontSize: 32,
     fontWeight: "bold",
     padding: 12,
     textAlign: "right"
   },
   historyText:{
-    color: "#7c7c7c",
+    color: "#6c6c6c",
     fontSize: 20,
     marginRight: 10,
     alignSelf: 'flex-end',
   },
+  
   buttons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+
   },
   button: {
     backgroundColor: 'white',
@@ -124,9 +129,10 @@ const styles = StyleSheet.create({
     minWidth: 90, 
     minHeight: 90,
     flex: 2,
+    backgroundColor:'#400080'
   },
   textButton: {
-    color: "#7c7c7c",
+    color: "#6c6c6c",
     fontSize: 20,
   } 
 });
